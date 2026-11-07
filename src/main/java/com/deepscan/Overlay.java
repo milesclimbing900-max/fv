@@ -81,7 +81,7 @@ public final class Overlay {
 	// ---------- entry point ----------
 	public static void render(GuiGraphicsExtractor g, DeltaTracker dt) {
 		Minecraft mc = Minecraft.getInstance();
-		if (mc.player == null || mc.level == null || mc.options.hideGui().get()) return;
+		if (mc.player == null || mc.level == null || mc.gui.hud.isHidden()) return;
 		Config c = Config.I;
 		float pt = dt.getGameTimeDeltaPartialTick(false);
 		long now = System.nanoTime() / 1_000_000L;
