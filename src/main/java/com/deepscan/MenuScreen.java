@@ -1,6 +1,6 @@
 package com.deepscan;
 
-import net.minecraft.Util;
+
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -24,7 +24,7 @@ public class MenuScreen extends Screen {
 		"minecraft:glass", "minecraft:iron_block", "minecraft:oak_sign", "minecraft:ladder"};
 	private static final int W = 400, H = 252;
 
-	private final long openMs = Util.getMillis();
+	private final long openMs = System.nanoTime() / 1_000_000L;
 	private final Map<String, Float> anim = new HashMap<>();
 	private int tab, page, mx, my;
 	private boolean down, wasDown, clicked;
@@ -132,7 +132,7 @@ public class MenuScreen extends Screen {
 		if (!down) drag = null;
 
 		Config c = Config.I;
-		long now = Util.getMillis();
+		long now = System.nanoTime() / 1_000_000L;
 		float t = Math.min(1f, (now - openMs) / 260f), e = 1f - (1f - t) * (1f - t) * (1f - t);
 		g.fill(0, 0, this.width, this.height, Overlay.alpha(0xFF020812, 0.6f * e));
 		int px = (this.width - W) / 2, py = (this.height - H) / 2 + (int) ((1 - e) * 14);
